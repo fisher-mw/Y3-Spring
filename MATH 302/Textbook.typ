@@ -131,4 +131,10 @@ _Fact:_ if P is uniform on a finite $Omega$ and $A subset.eq "then" P(A) = (|A|)
 $P "is called a probability measure on" Omega "if it satisfies (i)-(iii)":$
 - (i) $0 <= P(A) <= 1 ",for any" A subset.eq Omega$
 - (ii) $P(Omega) = 1$
-- (iii) if $A_1,A_2,A_3,...$ are pairwise disjoint, then for all $n in NN union {infinity}, P(union.plus.big_(i=1)^n A_i)= Sigma_(i=1)^n P(A_i)$ (note: $union.plus.big$ denotes a disjoint union, i.e. the sets involved have no elements in common $arrow$ we combine all elements in $A "and" B$ but the sets are mutually exclusive )
+- (iii) if $A_1,A_2,A_3,...$ are pairwise disjoint, then for all $n in NN union {infinity}, P(union.plus.big_(i=1)^n A_i)= Sigma_(i=1)^n P(A_i)$ (note: $union.plus.big$ denotes a disjoint union, i.e. the sets involved have no elements in common $arrow$ we combine all elements in $A "and" B$ but the sets are mutually exclusive ) \
+*Section 1.2* Basic combinitorics \
+_Clear example:_ How many two-digit numbers are there with distinct digits (first digit may be zero)? \
+10 (possibilites for the first digit) $times$ 9 (remaining possibilites for the second digit) = 90 \
+_Fact_ there are $n!$ ways of ordering $n$ distinct elements \
+In the above examples, we see that there are 10 possibilities for the first, 9 for the second, if we continued there would be 8...so on and so forth (order matters). Notice that $n("number of digits") = 10$, we pick 2 digits.  $(n-1) times (n-2) times ... (n-k)$ if we wanted to find the number of ways to pick $k$ distinct digits. This formula is generalized by $(n)_k=n!/((n-k)!)$ \
+Similarly, if we were interested in all the possible ways
