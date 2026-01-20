@@ -137,4 +137,10 @@ _Clear example:_ How many two-digit numbers are there with distinct digits (firs
 10 (possibilites for the first digit) $times$ 9 (remaining possibilites for the second digit) = 90 \
 _Fact_ there are $n!$ ways of ordering $n$ distinct elements \
 In the above examples, we see that there are 10 possibilities for the first, 9 for the second, if we continued there would be 8...so on and so forth (order matters). Notice that $n("number of digits") = 10$, we pick 2 digits.  $(n-1) times (n-2) times ... (n-k)$ if we wanted to find the number of ways to pick $k$ distinct digits. This formula is generalized by $(n)_k=n!/((n-k)!)$ \
-Similarly, if we were interested in all the possible ways
+#underline()[*Moral*] \
+_Where A is the set of outcomes_
+- *When order matters and we sample with replacement: * the number of ways we could sample from $A arrow$ |$Omega| = |A^k| = |A|^k = n^k$  where $k$ is the number of trials and $A$ is the set of outcomes
+- *When order matters and we sample without replacement: * the number of ways we could sample from $A$ is denoted as $|(A)_k| = (|A|)_k = (n)_k = n!/((n-k)!) = |Omega|$
+- *When order does not matter and we sample with replacement:* multichoose; number of ways we could choose $k$ items from $A =mat(n + k - 1;k) = (n+k-1)!/(k!(n-1)!) = |Omega|$ 
+- *When order does not matter and we sample without replacement:* The number of ways we could sample $k$ items from $A$ is $mat(|A|;k) = n!/(k!(n-k)!) = |Omega|$
+*Section 1.3* 

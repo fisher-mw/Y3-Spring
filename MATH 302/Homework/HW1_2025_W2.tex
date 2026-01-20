@@ -1,0 +1,171 @@
+%
+\documentclass{amsart}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+
+
+\numberwithin{equation}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{statement}[theorem]{Statement}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{m}{Theorem \ref{t:main}}
+\newtheorem*{M}{Theorem \ref{t:Main}}
+\newtheorem*{c:occup}{Corollary \ref{c:occup}}
+\newtheorem*{c:Main}{Corollary \ref{c:Main}}
+\newtheorem*{c:Mainp}{Corollary \ref{c:Mainp}}
+\newtheorem*{c:Mainp2}{Corollary \ref{c:Mainp2}}
+\newtheorem*{occup2}{Corollary \ref{c:occup2}}
+\newtheorem*{ex}{Theorem \ref{t:ex}}
+\newtheorem*{sing}{Theorem \ref{t:sing}}
+\newtheorem*{nonshy}{Theorem \ref{t:nonshy}}
+\newtheorem*{cmain}{Corollary \ref{c:main}}
+\newtheorem*{Bruckner}{Theorem \ref{t:npns}}
+\newtheorem*{isoshy}{Theorem \ref{t:isoshy}}
+\newtheorem*{perfect}{Theorem \ref{t:perfect}}
+\newtheorem*{t:graph}{Theorem \ref{t:graph}}
+\newtheorem*{t:graph2}{Theorem \ref{t:graph2}}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+
+
+
+
+
+\DeclareMathOperator{\inter}{int}
+\DeclareMathOperator{\mesh}{mesh}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Prob}{Pr}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\spn}{span}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\SS}{\mathbb{S}}
+
+\newcommand{\iA}{\mathcal{A}}
+\newcommand{\iB}{\mathcal{B}}
+\newcommand{\iC}{\mathcal{C}}
+\newcommand{\iD}{\mathcal{D}}
+\newcommand{\iG}{\mathcal{G}}
+\newcommand{\iH}{\mathcal{H}}
+\newcommand{\iI}{\mathcal{I}}
+\newcommand{\iJ}{\mathcal{J}}
+\newcommand{\iK}{\mathcal{K}}
+\newcommand{\iL}{\mathcal{L}}
+\newcommand{\iM}{\mathcal{M}}
+\newcommand{\iR}{\mathcal{R}}
+\newcommand{\iF}{\mathcal{F}}
+\newcommand{\iP}{\mathcal{P}}
+\newcommand{\iS}{\mathcal{S}}
+\newcommand{\iN}{\mathcal{N}}
+\newcommand{\iU}{\mathcal{U}}
+\newcommand{\iT}{\mathcal{T}}
+\newcommand{\iV}{\mathcal{V}}
+\newcommand{\iX}{\mathcal{X}}
+\newcommand{\iZ}{\mathcal{Z}}
+\newcommand{\iY}{\mathcal{Y}}
+\newcommand{\iQ}{\mathcal{Q}}
+\renewcommand{\P}{\mathbb{P}}
+
+\overfullrule10pt
+
+
+\begin{document}
+
+ \thispagestyle{empty}
+
+{\bf Math 302, Assignment 1}
+
+\vspace{3mm}
+
+ Due Mon, Jan 19th, by 11:59 PM on Canvas in typeset. You are required to explain the mathematical reasoning behind your answers. For instance,  describe in words what each combinatorial quantity in your solution corresponds to. No late submissions accepted.
+
+
+\vspace{6mm}
+\begin{enumerate}
+	
+\item Let $S=\{1,\{\},c\}$ be a sample space. List all possible events.
+
+\textbf{Hint:} The fact that one of the elements in $S$ is the empty set $\{\}$ is meant to be confusing in a superficial manner. Your answer should be similar in some sense to what it would be if $S$ in the question was replaced with $\{1,2,c\}$. Remember the definition from \S~1.1 that the set of events are $\{A: A \subseteq \Omega \}$ (this includes $A=S$ and $A=$ the empty set). A finite set $S$ of size $k$ has $2^k$ subset (to be discussed in more depth in a future lecture).
+
+
+
+
+
+
+
+
+
+\item Assuming a fair poker deal (and a standard deck of 52 cards as in lecture), what is the probability of a 
+
+\begin{enumerate}[(a)]
+\item royal flush (i.e., all 5 cards having the same suit and being 10,J,Q,K,A)
+\item straight flush (you should exclude royal flushes; A,2,3,4,5 all with the same suit is also a straight flush)
+\item flush (you should exclude straight flushes and royal flushes)
+\item straight (you should exclude straight flushes and royal flushes; the cases 10,J,Q,K,A and A,2,3,4,5 both count as a straight, as long as the five cards do not all have the same suit (since we are excluding royal flushes and straight flushes))
+\item two pairs
+\end{enumerate} 
+See \url{https://en.wikipedia.org/wiki/List_of_poker_hands} for the definition of these poker hands.
+
+Tip: As in lecture, you can model the problem either so that order matters or so that it doesn't. As long as you are consistent
+with your choice you should get the same answer either way. In lecture I said that it is more convenient in this particular case to model it so that order does not matter.
+
+\item (a) How many ways are there to deal 52 standard playing cards to four players (so that each player gets 13 cards)?
+
+Clarification: The order of the 13 cards that each player receive does not matter, but the four players are treated as different (e.g., call them player 1, player 2, player 3 and player 4; to clarify, imagine that the cards are labeled by the numbers 1,2,...,52, then the case that player 1 receives cards 1,...,13, player 2 receives cards 14,...,26, player 3 receives cards 27,...,39 and player 4 receives cards 40,...,52 is not the same as the case that that player 1 receives cards 14,...,26, player 2 receives cards 1,...,13, player 3 receives cards 27,...,39 and player 4 receives cards 40,...,52).  When in doubt, you should always explain your interpretation of the problem, and unless it makes the problem much easier, you should receive almost a full mark (or a full mark).  
+
+(b) Suppose you are world champion in card dealing, and can deal 52 cards in just one second. Compare the number of years it would take you to deal all possible combinations with the current age of the universe (13.77 billion years).
+
+\item We toss a fair six-sided die three times. What is the probability that all tosses produce different outcomes? 
+
+
+\item {\bf Challenge, not marked.} Prove that the number of unordered sequences of length $k$ with elements from a set $X$ of size $n$ is $\binom{n+k-1}{k} $.\\
+\textit{Hint}: For illustration, first consider the example $n=4, k=6 $. Let the 4 elements of the set $X$ be denoted $a,b,c,d$. Argue that any unordered sequence of size $6$ consisting of elements $a,b,c,d$ can be represented uniquely by a symbol similar to ``$\cdot\cdot\vert \cdot\vert \cdot\cdot\vert \cdot $'', corresponding to the sequence $aabccd$. Now count the number of choices for the vertical bars.
+
+
+\item You own $n$ colours, and want to use them to colour 8 objects. For each object, you randomly choose one of the colours. How large does $n$ have to be (i.e., what is the minimal such $n$) so that the probability that there exists a pair of objects which shares the same colour is less than 0.25?
+Clarification: "exists a pair" means "exists at least one pair", not "exactly one pair".
+
+
+Hint: First find an expression for this probability as a function of $n$ (a relevant somewhat similar example was analyzed in the first lecture). See a hint at the end of the slides for section 1.2 for how to proceed using a computer or a calculator once you found such expression. The hint is helpful for minimizing the amount of trials when using a calculator until finding the right value of $n$.
+
+%\item Consider the following game: An urn contains 20 white balls and 10 black balls. If you draw a white ball, you get \$1, but if you draw a black ball, you lose \$2.
+%\begin{enumerate}
+%\item You draw 6 balls out of the urn. What is the probability that you will win money?
+%\item How many balls should you draw in order to maximize the probability of winning? 
+%\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+\end{document} 
