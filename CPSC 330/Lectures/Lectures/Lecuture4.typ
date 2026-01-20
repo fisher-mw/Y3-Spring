@@ -153,3 +153,6 @@ _Cons_ \
 Key hyperparameters of SVM (rbf)
 - gamma
 - C
+*Relation of C and the fundamental trade-off* \
+- Gamma controls complexity, high gamma $arrow$ more complex
+- C also controls complexity, high C $arrow$ more complex
