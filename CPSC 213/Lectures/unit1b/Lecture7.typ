@@ -144,4 +144,9 @@ r[1] $<-$ 0x1000 \//address of $a$ \
 r[2] $<-$ m[r[1]] \
 r[3] $<-$ 0x2000 \// base address of $b$ \ 
 m[r[3]+r[2] $times$ 4] $<-$ r[2] \// compute offset
+\ *Load and store instructions* \
+- Immediate: opperand value obtained from instruction itself
+- Register operand is register value; register stores operand value
+- Base + offset: operands are register number and optional offset; register stores memory address (via offset) of value; offset o=px4
+- Indexed: operands are two register numbers; registers store base address and index of value
 
