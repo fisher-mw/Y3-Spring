@@ -115,3 +115,65 @@
 // Your notes start here
 // ============================================================
 // 
+// 
+*sklearn SimpleImputer* \
+- Preprocess data to fill NaN values
+```
+# Impute numeric features using SimpleImputer
+from sklearn.impute import SimpleImputer
+
+imputer = SimpleImputer(strategy='median')
+
+# fit the imputer 
+imputer.fit(X_train_num)
+
+# Transform training data 
+X_train_num_imp = imputer.transform(X_train_num)
+
+imputer.fit_transform(X_train_num)
+
+# Transform test data 
+X_test_num_imp = imputer.transform(X_test_num)
+```
+*Pipelining*
+- Used to ensure preprocessing steps are the same acrossing training and validation
+```
+### Simple example of a pipeline
+from sklearn.pipeline import Pipeline
+
+pipe = Pipeline(
+    steps=[
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler()),
+        ("classifier", KNeighborsClassifier()),
+    ]
+)
+```
+- Pipelines are linear, we cannot scale numeric features, and one-hot encode of categorical features (this seperates the processing into different 'pipelines' which we cannot do) \ \ \
+
+_Aside:_ We need to convert categorical data
+- Use One-hot encoding; creates new columns for each category, where 1 means present and 0 means not present
+- Ordinal; use OrdinalEncoder
+- ColumnTransformer; takes original data, scales and one-hot encodes, outputs transformed data (order of column transformer)
+```
+from sklearn.compose import make_column_transformer
+
+numeric_transformer = make_pipeline(SimpleImputer(strategy="median"),
+                                    StandardScaler()) 
+binary_transformer = make_pipeline(SimpleImputer(strategy="most_frequent"), 
+                                    OneHotEncoder(drop="if_binary"))
+ordinal_transformer = make_pipeline(SimpleImputer(strategy="most_frequent"), 
+                                    OrdinalEncoder(categories=[noise_ordering]))
+categorical_transformer = make_pipeline(SimpleImputer(strategy="most_frequent"), 
+                                    OneHotEncoder(sparse_output=False, handle_unknown="ignore"))
+
+# Define the column transformer
+preprocessor = make_column_transformer(
+    (numeric_transformer, numeric_feats),
+    (binary_transformer, binary_feats),
+    (ordinal_transformer, ordinal_feats),
+    (categorical_transformer, categorical_feats),    
+    ("drop", drop_feats)    
+)
+```
+- ColumnTranformer does parallel pipelining depending on what group you are in.
