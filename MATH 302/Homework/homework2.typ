@@ -187,8 +187,12 @@ P({"roll a six before 20th roll"}) = 1 - P({"no 6 in first 20 rolls"}) \
 = 1 -(5/6)^19 \ P({"roll a six before 5th roll"})= 1-(5/6)^4 \ 
 P(A) = 1- (5/6)^19-(1-(5/6)^4) = (5/6)^4-(5/6)^19 $ \
 #line(length:100%) 
-*Q6: The statement "some days are snowy" has 16 letters (treating different appearances of the same letter as distinct). Pick one of them uniformy at random (i.e. each with equal probability). Let $X$ be the length of the word to which the letter which was chosen belongs. Determine $PP[X=k] "for" k in {3,4,5}$ * 
-
+*Q6: The statement "some days are snowy" has 16 letters (treating different appearances of the same letter as distinct). Pick one of them uniformly at random (i.e. each with equal probability). Let $X$ be the length of the word to which the letter which was chosen belongs. Determine $PP[X=k] "for" k in {3,4,5}$ * \ 
+Letters are picked uniformly at random. Let $A_1={"letters in 3 letter words"}$, $A_2={"letters in 4 letter words"}$, $A_3={"letters in 5 letter words"}$, and $Omega = {"ways to randomly pick one letter from the sentence"}$.\
+$ P(X=3) = (|A_1|)/(|Omega|) = 3/16 \ 
+P(X=4)= (|A_2|)/(|Omega|) = 8/16 \ 
+ P(X=4)= (|A_3|)/(|Omega|) = 5/16 $ \
+ Notice that the probability that, if we pick a letter uniformly at random, the letter _is_ in a word in the sentence, we get the sum of these probabilities. Intuitively, the probability of doing so should be 1. And indeed, $3/16 + 8/16 + 5/16 = 1$. 
 
 
 
