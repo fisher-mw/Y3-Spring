@@ -121,12 +121,12 @@ Proof: \
 $PP((E sect F)^c) + PP(E sect F) = 1$ #h(2em) by def. of probability measure \
 $PP(E sect F) = 1/4$ \ 
 $PP(E\\F) =  (E sect F^c)$ \
-(1)  show that $(E sect F^c) "and" (E sect F) "are disjoint"$ 
+(1)  _show that_ $(E sect F^c)$ _and_ $(E sect F) $  _are disjoint so that we can take the sum_
  \
 $(E sect F^c) sect (E sect F)$ \
 $(E sect E) sect (F^c sect F)$ #h(1.7em) by associative and commutative property \
 $(E sect emptyset) $ #h(7em) by idempotent and complement \ $ = emptyset$ \ $therefore$ (1) \
-(2) show that $(E sect F^c) union (E sect F) subset.eq (E union F)$ \
+(2) _show that_ $(E sect F^c) union (E sect F) subset.eq (E union F)$ _so that we can determine bound_ \
 $(E sect F^c) union (E sect F) = E sect (F^c union F)$ \
 $E union U = E$ \
 $E subset.eq (E union F)$ \
