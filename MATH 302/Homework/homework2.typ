@@ -120,15 +120,16 @@
 Proof: \
 $PP((E sect F)^c) + PP(E sect F) = 1$ #h(2em) by def. of probability measure \
 $PP(E sect F) = 1/4$ \ 
+$PP(E\\F) =  (E sect F^c)$ \
 (1)  show that $(E sect F^c) "and" (E sect F) "are disjoint"$ 
  \
 $(E sect F^c) sect (E sect F)$ \
 $(E sect E) sect (F^c sect F)$ #h(1.7em) by associative and commutative property \
 $(E sect emptyset) $ #h(7em) by idempotent and complement \ $ = emptyset$ \ $therefore$ (1) \
-(2) show that $(E sect F^c) union (E sect F) subset (E union F)$ \
+(2) show that $(E sect F^c) union (E sect F) subset.eq (E union F)$ \
 $(E sect F^c) union (E sect F) = E sect (F^c union F)$ \
 $E union U = E$ \
-$E subset (E union F)$ \
+$E subset.eq (E union F)$ \
 $therefore (2) $
 
 
@@ -161,20 +162,21 @@ $ qed E_1^c "and" E_2^c$ are independent
 #h(2em)* b) If, in addition, $PP(E_1) = 1/2 "and" PP(E_2)=1/3$, Prove that $ PP(E_1 union E_2) = 2/3 $* $ P(E_1 union E_2) = P(E_1) + P(E_2) - P(E_1 sect E_2) $ \
 $ = P(E_1) + P(E_2) - P(E_1)P(E_2) #h(2em) "since" E_1 "and" E_2 "are independent" $  \
 $ = 1/2 +1/3 - 1/2 times 1/3 = 5/6 - 1/6 = 2/3 $
-#h(2em)*c) Let $E_3$ be a third event where  $PP(E_3) = 1/4$, such that all 3 events are independent. Prove that: \ $ 17/24 <= PP(E_1 union E_2 union E_3) <= 19/24 $* \ 
-$ P(E_1 union E_2 union E_3) = P(E_1) + P(E_2) + P(E_3) \ #h(16em)- P(E_1 sect E_2) - P(E_2 sect E_3) - P(E_1 sect E_3) \ #h(6em) + P(E_1 sect E_2 sect E_3) \ = 1/2 + 1/3 + 1/4 - 1/6 - 1/12 - 1/8 +  P(E_1 sect E_2 sect E_3) \ = 15/24 + P(E_1 sect E_2 sect E_3) #h(2em) (1) $ Now we must find the bounds on $I = P(E_1 sect E_2 sect E_3)$. Since we cannot say the events are jointly independent, let $A = E_1 sect E_2 = 4/24,$ and $B = E_2 sect E_3 = 2/24$, then \
-$ P(B sect E_3) <= P(E_1 sect E_2 sect E_3) <= P(A sect E_1) \ P(B sect E_3) <= 4/24 " and " P(A sect E_1)<= 2/24 $ Since $P(E_1), P(E_3) <= 1$ by definition of a probability measure \
-$therefore 2/24 <= P(E_1 sect E_2 sect E_3) <= 4/24$ #h(2em) substitute into (1)\
-
+#h(2em)*c) Let $E_3$ be a third event where  $PP(E_3) = 1/4$, such that all 3 events are independent (not jointly). Prove that: \ $ 17/24 <= PP(E_1 union E_2 union E_3) <= 19/24 $* \ 
+$ P(E_1 union E_2 union E_3) = P(E_1) + P(E_2) + P(E_3) \ #h(16em)- P(E_1 sect E_2) - P(E_2 sect E_3) - P(E_1 sect E_3) \ #h(6em) + P(E_1 sect E_2 sect E_3) \ = 1/2 + 1/3 + 1/4 - 1/6 - 1/12 - 1/8 +  P(E_1 sect E_2 sect E_3) \ = 17/24 + P(E_1 sect E_2 sect E_3) #h(2em) (1) $  \
+We need to find the bounds on $P(E_1 sect E_2 sect E_3)$:
+- The minimum value occurs when $E_1 sect E_2 sect E_3 = emptyset$, so $P(E_1 sect E_2 sect E_3) = 0$
+- To find the tightest upper bound on $P(E_1 sect E_2 sect E_3),$ we know that $(E_1 sect E_2 sect E_3) subset.eq (E_1 sect E_2),$ _(note: I am picking $E_1 sect E_2$ because the product gives me the tightest bound_). This means that $P(E_1 sect E_2 sect E_3)<=P(E_2 sect E_3) = 1/3 times 1/4 = 2/24$ \. 
+Since $0<=P(E_1 sect E_2 sect E_3)<=2/24$, by (1) we get,
 
 $qed 17/24 <= P(E_1 union E_2 union E_3) <= 19/24 $ \
 #line(length: 100%) \
 *Q4: Eight rooks are placed randomly on a chess board (8x8). What is the probability that none of the rooks can capture any of the other rooks?* \
-_On an 8x8 chess board, the only valid arangement of rooks such that no two of the rooks can capture any of the others is if they are placed on the main and off diagonal._ \
+\
 $P(A="8 rooks are randomly placed on diagonals") = (|A|)/(|Omega|)$ \ 
-Since order matters, there are 8! ways to arrange the rooks on either diagonal. Since we have two diagonals, $|A|=2 times 8!$ \
+Looking at the problem space, for the first rook, we place it on the 8x8 board, then we loose the row and column, then next valid space is the 7x7 square. Recursively we reduce until we have 1 square left. Therefore, $|A| = 64 times 49 times 36 times 25 times 16 times 9 times 4 times 1$  \
 For $|Omega|$, there are 64 squares on the chess board, and we have to pick eight, one for each rook. Since order matters we get $(64)_8$. \
-$P(A)= (2 times 8!)/(64)_8$ \
+$P(A)= 64 times 49 times 36 times 25 times 16 times 9 times 4 times 1/(64)_8$ \
 #line(length: 100%) 
 *Q5: A fair six-sided die is rolled repeatedly. \ #h(2em) (a) Given an expression for the probability that the first five rolls give a four at most two times.*\ 
 We can roll a four 0, 1, or 2 times in 5 rolls. This means the probability of at most two fours in five rolls is denoted as the sum of these events. $ P(A) = P({"No fours"}) + P({1 "four"}) + P({2 "four"}) \
@@ -192,7 +194,7 @@ Letters are picked uniformly at random. Let $A_1={"letters in 3 letter words"}$,
 $ P(X=3) = (|A_1|)/(|Omega|) = 3/16 \ 
 P(X=4)= (|A_2|)/(|Omega|) = 8/16 \ 
  P(X=4)= (|A_3|)/(|Omega|) = 5/16 $ \
- Notice that the probability that, if we pick a letter uniformly at random, the letter _is_ in a word in the sentence, we get the sum of these probabilities. Intuitively, the probability of doing so should be 1. And indeed, $3/16 + 8/16 + 5/16 = 1$. 
+ Notice that the probability that the letter is in a word in the sentence (any of the words), we get the sum of these probabilities. Intuitively, the probability of doing so should be 1. And indeed, $3/16 + 8/16 + 5/16 = 1$. 
 
 
 
