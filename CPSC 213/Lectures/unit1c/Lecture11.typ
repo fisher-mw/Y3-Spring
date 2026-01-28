@@ -2,8 +2,8 @@
 // Customize the variables below for each lecture/topic
 
 #let course = "CPSC 213"
-#let lecture_num = "10"
-#let topic = "Instance variables and Dynamic Allocation"
+#let lecture_num = "11"
+#let topic = "More on Dynamic Array Access"
 #let date = datetime.today().display()
 
 // Page setup
@@ -116,48 +116,58 @@
 // Your notes start here
 // ============================================================
 
-_Recap:_
-- *What C does that Java doesn't*
-  - Static arrays, Array access using pointer dereferencing, pointer arithmetic
-- *What Java does that C doesn't*
-  - Type-safe dynamic allocation automatic array-bounds checking
+*Prologue: Why Struct Alignment and Offsets Matter* \
+- Alignment affects:
+  - Correctness when accessing memory directly
+  - Performance
+  - Interpobility
+*Structs:*
+- Structs can be declared as members of other structs _(note: pointers are 4 bytes on 32 byte systems)_
+- interesting example:
+  ```
+  struct Z {
+    int i;
+    struct Z* z;
+    int j;
+  }
+  ```
+  In memory, struct Z points to another struct Z on the heap, this is a linked list.
+  *Padding*
+  - We need to make sure our structs are aligned
+  - In module 1, member variables are aligned by their size
+  - For structs, the struct is aligned to its largest member variable
+  - The size of a struct must be a multiple of its Alignment
 
-*Instance Variables*\ _Question:_ How does the machine support many independent "instances" of data?
-- Variables that are an instance of a _class_ or a _struct_
-  - Created dynamically (usually)
-  - Many instances of the same class/struct can co-exist
-- Java vs C 
-  - Java: Objects are instances of non-static variables of a class
-  - C: structs are named variable groups, or one of their instances
-- Accessing an instance variable
-  - Requires a reference/pointer to a particular object/struct
-  - Then the variable name chooses a variable in that object/struct
-*Structs in C*
-- A struct is a collection of variables of arbitrary type (no methods)
-  - Allocated and accessed together 
-  - No private member variables
-- Declaration
-  - Similar to declaring a Java class without methods
-  - static: struct D d0;
-  - dynamic: struct D\* d1;
-- Access:
-  - static: d0.e = d0.f 
-  - dynamic: d1->e = d1->f \#dereference d1->f, store it into the place that d1->e lives
-*Struct Allocation*
-- Static structs are allocated by the compiler
-- Dynamic structs are allocated at runtime
-  - the sturct pointer may be static or dynamic 
-  - the struct itself is allocated with a call to malloc
-- Runtime allocation od dynamic struct
 ```
-void foo() {
-  d1 = malloc(sizeof(struct D));
+struct X {
+  char a; # base
+  char b; # offset 1
+  int i; # cant put an int at offset of 2 since 2 % 4 != 0
+}
+
+struct Y {
+  char a; #base, waste 3 bytes
+  int i; # offset 4
+  char b; # offset 9 
+  # size of struct must be multiple of its alignment, aligned to the largest of their members' alignment 
+  # but must be a multiple of 4, so we pad by another 3 s.t. 12 % Y.size = 0
 }
 ```
-Static vs Dynamic access of structs follows the same pointer dereference structure that we saw in arrays. \
-- Struct members
-  - Base address in register (start of struct)
-  - Static (constant) offset (bytes from start of srtruct)
-  - access memory at base plus static offset
-  - equivalent to access to array element with static index (ld p(rs), rd)
-  - Base + offset (known at compile time) $arrow$ ask question about this
+struct design effects performance, when we design structs without the offset in mind, there is more memory to traverse
+```
+#Assume 8-byte addressing
+#What is the offset of j?
+struct D {
+  int e;
+  int f;
+}
+struct X {
+  int i;
+  struct D* d;
+  int j;
+}
+# with 8-byte addressing, the size of d is 8-bytes, offset of d is 4, but then d is not aligned, so we pad by another 4, then the offset of d is 8, its size it 8, so j is offset by 16
+
+```
+- Array of structs i.e. struct S a[42] ; allocates a bunch of memory upfront 
+- Array of pointers to structs i.e. struct S\* b[42] ; results in a load needed for each pointer
