@@ -176,4 +176,4 @@ preprocessor = make_column_transformer(
     ("drop", drop_feats)    
 )
 ```
-- ColumnTranformer does parallel pipelining depending on what group you are in.
+ ColumnTranformer does parallel pipelining depending on what group you are in.
