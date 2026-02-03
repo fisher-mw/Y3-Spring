@@ -115,4 +115,27 @@
 // ============================================================
 // Your notes start here
 // ============================================================
+Cannot free a memory address that has not been allocated, consider the situation in which we alloacte 10 bytes of memory and then change the pointer to the base address. When we try to deallocate the pointer, we get an invalid free.
+*Avoiding Memory Problems in C*
+- Where is the memory allocated?
+- Where is the memory freed?
+- Avoid the program clases
+  - If possible, restrict dynamic allocation/free to single procedure
+  - If possible, dont write prcodures that return pointers
+  - If possible, use local variables instead
+  - Local variables are allocated on call and freed on return, automatically 
+  - Engineer for memory management
+  - define rules for which procedure is responsible for deallocation
+  - use explicit reference counting if multiple potential deallocators
+  - define rules for which pointers can be stored in data structures 
+  - use coding conventions and documentation to ensure rules are followed
+*In C*
+- Local variables are automatically freed
+  - _In a week we will see how this works at a machine level_
+*Strings in C*
+- an array of characters
+- the end of a string is indicated by the first 0 (null) in the array
+- so, every string has a 
+  - max length (length of array - 1), a.k.a string size
+  - determined by position of the first null ("\\0")
 
