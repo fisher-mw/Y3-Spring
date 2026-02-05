@@ -1,9 +1,9 @@
-//  Course Notes Template
-// Customize the variables below for each lecture/topic
 
-#let course = "CPSC 213"
-#let lecture_num = "___"
-#let topic = "______"
+#import "@preview/zebraw:0.6.1": *
+#show: zebraw
+#let course = "CPSC 330"
+#let lecture_num = "9"
+#let topic = "Classification Metrics"
 #let date = datetime.today().display()
 
 // Page setup
@@ -115,3 +115,9 @@
 // ============================================================
 // Your notes start here
 // ============================================================
+// 
+*Evaluation metrics for binary classification: Motivation*
+- Confusion matrix
+  - False positives (type I error)
+  - False negative (type II error)
+
