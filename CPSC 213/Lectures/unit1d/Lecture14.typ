@@ -1,9 +1,10 @@
 
-#import "@preview/zebraw:0.6.1": *
-#show: zebraw
-#let course = "CPSC 330"
-#let lecture_num = "9"
-#let topic = "Classification Metrics"
+//  Course Notes Template
+// Customize the variables below for each lecture/topic
+
+#let course = "CPSC 213"
+#let lecture_num = "14"
+#let topic = "Control flow"
 #let date = datetime.today().display()
 
 // Page setup
@@ -115,11 +116,38 @@
 // ============================================================
 // Your notes start here
 // ============================================================
-// 
-*Evaluation metrics for binary classification: Motivation*
-- Confusion matrix
-  - False positives (type I error)
-  - False negative (type II error)
-*Regression Metrics* 
-- 
 
+*Explicit free advantages*
+- In Java, JVM is constantly running keeping track of memory allocation/deallocation, in C the onous is on the programmer, but we dont have the background task that expends compute.
+- Reference counting: mitigates dangling-pointers
+- Should we ignore deallocation in Java programs?
+  - Memory leaks can still occur
+  - When garbage collector fails to reclaim unneeded objects
+  - its a signigicant problem for long-running programs where garbage accumulates
+  - Java only reclaims unreachable objects
+
+ *Prologue*
+- Explain the role of the program counter register for normal execution and for branch execution
+ Linear execution: At any moment, the CPU executes exactly one instruction. _Note:_ linear in time, non-sequential in memory
+
+ *Loops*
+- We can use pointers to step through memory, consider:
+ ```
+ int s = 0;
+ int *p;
+ int a[] = {...}
+
+void foo() {
+  p = a; # set p to the base of a
+  while (p < a + 10) { # comparing addresses
+    s+= *p++; # s = *p + s, then increment address of p
+  }
+}
+ ``` 
+ note:
+  ```
+  s+= *p++ is the same as
+  s+=*p;
+  p++;
+  ```
+  

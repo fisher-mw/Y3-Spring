@@ -172,3 +172,4 @@ void rc_free_ref (void* p) {
 ```
 When a reference is a parameter
   - The caller has a reference and maintains it for the duration of the call
+
