@@ -136,4 +136,19 @@
   - instructions that go to a specific address must be big
   - Control-flow instructions are common
 - Jumps move a short distance
-*New ISA instructions*
+*New ISA instructions* \
+Look for:
+- Initialization
+- Condition (branch)
+- Step increment/decrement (unconditional branch)
+
+Note: We use zero flagging 
+
+*Implementing Conditionals* \
+We structure conditionals by changing the branch if the condition is met, this means we say
+```
+ if (a>b) go to then:
+ else:
+ then:
+```
+The "then" is blocked by br end_if, 
