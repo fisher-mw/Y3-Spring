@@ -133,4 +133,8 @@ P(A'|B_2)= 1 - P(A|B_2) \
 =1-binom(m_2,2)/binom(N,2) \ 
 P(A') = 1 - P(A) \ "By substitution from above and previous question, behold:"\
 P(B_2|A')= 1/b times (1 - P(A|B_2))/(1-P(A)) = 1/b times (1-binom(m_2,2)/binom(N,2)) times
-1/(1-(k_1 times binom(m_1, 2) + k_2 times binom(m_2, 2) + k_3 times binom(m_3, 2))/(binom(N,2)N)) $
+1/(1-(k_1 times binom(m_1, 2) + k_2 times binom(m_2, 2) + k_3 times binom(m_3, 2))/(binom(N,2)N)) \
+\ 
+\ 
+\ \ \ \ $
+F 

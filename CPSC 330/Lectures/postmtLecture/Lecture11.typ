@@ -1,10 +1,9 @@
 
-//  Course Notes Template
-// Customize the variables below for each lecture/topic
-
-#let course = "CPSC 213"
-#let lecture_num = "15"
-#let topic = "Program Counter and Control Flow"
+#import "@preview/zebraw:0.6.1": *
+#show: zebraw
+#let course = "CPSC 330"
+#let lecture_num = "__"
+#let topic = "____"
 #let date = datetime.today().display()
 
 // Page setup
@@ -116,39 +115,25 @@
 // ============================================================
 // Your notes start here
 // ============================================================
-*Program Counter (PC)*
-- PC stores address of next intrustruction
-- Need an unconditional jump
-- Conditional based on a register value (common in RISC)
-- Conditional based on result of lst ALU intrustruction
-  - Used in Intel-based processors
-*Jump instruction examples:*
-- Absolute addressing (jump)
-  - X---00001008
-  - Large instructions, we use this to make large jumps (if we need to end program early, call functions, etc)
-- Relative addressing (branch)
-  - We are limited by p-[-128,127] and o-[-256,254]
-  - We need to be able to jump further than this offset
+// 
 
 
-*Problem: Jump Instruction Size*
-- Memory addresses are big
-  - instructions that go to a specific address must be big
-- Control-flow instructions are common
-- Jumps move a short distance
-*New ISA instructions* \
-Look for:
-- Initialization
-- Condition (branch)
-- Step increment/decrement (unconditional branch)
+*Random Forest Classifier*
+To ensure that the trees in the random forest are different we inject randomness in two ways:
+- Data: Build each tree on a bootstrap sample
+- Features: At each node, select a random subset of features (controlled by "max_features")
+How it works:
+1. Create a collection of trees
+2. Grow each tree on an independent sample from the data 
+3. Randomly select a subset of features out of all features (independently for each node)
+4. Find the best split on the selected sample
+5. Grow trees to max depth
+6. Trees vote to get predictions on new sample
 
-Note: We use zero flagging 
-
-*Implementing Conditionals* \
-We structure conditionals by changing the branch if the condition is met, this means we say
-```
- if (a>b) go to then:
- else:
- then:
-```
-The "then" is blocked by br end_if, 
+*Strengths and weaknesses*
+- Usually one of the best performing of-the-shelf classifiers without heavy tuning of hyperparameters
+- Dont require scaling of data      
+- Less likely to overfit 
+- Requires more memory
+- Hard to interpret
+- Tend not to perform well on high dimensional sparse data such as text data
